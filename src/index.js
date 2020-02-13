@@ -34,8 +34,7 @@ class App extends React.Component {
           <Judge />
           <Time2 spend={this.state.tortoiseTime} />
         </div>
-        <Track1 success={this.success1} />
-        <Track2 success={this.success2} />
+        <PlayGround success1={this.success1} success2={this.success2}/>
       </div>
     )
   }
@@ -45,7 +44,7 @@ class App extends React.Component {
 function Time1(props) {
   return (
     <div>
-      <h2>🐇{parseInt(props.spend/1000)}秒</h2>
+      <h2>🐇{parseInt(props.spend / 1000)}秒</h2>
       <div>0</div>
     </div>
   )
@@ -54,7 +53,7 @@ function Time1(props) {
 function Time2(props) {
   return (
     <div>
-      <h2>🐢{parseInt(props.spend/1000)}秒</h2>
+      <h2>🐢{parseInt(props.spend / 1000)}秒</h2>
       <div>0</div>
     </div>
   )
@@ -132,6 +131,15 @@ class Track2 extends React.Component {
       </div>
     )
   }
+}
+
+function PlayGround(props) {
+  return (
+    <div className="playGround">
+      <Track1  success={props.success1}/>
+      <Track2  success={props.success2}/>
+    </div>
+  )
 }
 
 // ========================================

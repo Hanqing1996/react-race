@@ -44,3 +44,7 @@ body {
 .player{
   transition: all 1s linear;
 }
+
+.playGround{
+  background-color: green;
+}
