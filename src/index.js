@@ -2,31 +2,50 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-function App() {
-  let t0 = new Date()
-  let rabbitTime = 120
-  let tortoiseTime = 130
 
-  let success1 = () => { console.log('兔子跑完了'); rabbitTime = new Date() - t0 }
-  let success2 = () => { console.log('乌龟跑完了'); tortoiseTime = new Date() - t0 }
-
-  return (
-    <div >
-      <div className="header">
-        <Time1 spend={rabbitTime}/>
-        <Judge />
-        <Time2 spend={tortoiseTime}/>
+class App extends React.Component {
+  constructor() {
+    super()
+    // 以下为需要更新的量
+    this.state = {
+      rabbitTime: 0,
+      tortoiseTime: 0
+    }
+    // 以下为不变的量
+    this.t0 = new Date()
+    this.success1 = () => {
+      console.log('兔子跑完了');
+      this.setState({
+        rabbitTime: new Date() - this.t0
+      })
+    }
+    this.success2 = () => {
+      console.log('乌龟跑完了');
+      this.setState({
+        tortoiseTime: new Date() - this.t0
+      })
+    }
+  }
+  render() {
+    return (
+      <div >
+        <div className="header">
+          <Time1 spend={this.state.rabbitTime} />
+          <Judge />
+          <Time2 spend={this.state.tortoiseTime} />
+        </div>
+        <Track1 success={this.success1} />
+        <Track2 success={this.success2} />
       </div>
-      <Track1 success={success1} />
-      <Track2 success={success2} />
-    </div>
-  )
+    )
+  }
 }
+
 
 function Time1(props) {
   return (
     <div>
-      <h2>🐇{props.spend}</h2>
+      <h2>🐇{parseInt(props.spend/1000)}秒</h2>
       <div>0</div>
     </div>
   )
@@ -35,7 +54,7 @@ function Time1(props) {
 function Time2(props) {
   return (
     <div>
-      <h2>🐢{props.spend}</h2>
+      <h2>🐢{parseInt(props.spend/1000)}秒</h2>
       <div>0</div>
     </div>
   )
