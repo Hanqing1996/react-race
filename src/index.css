@@ -32,20 +32,11 @@ body {
     width: 34px;
   }
   
-  .square:focus {
-    outline: none;
-  }
-  
-  .kbd-navigation .square:focus {
-    background: #ddd;
-  }
-  
-  .game {
-    display: flex;
-    flex-direction: row;
-  }
-  
-  .game-info {
-    margin-left: 20px;
-  }
-  
+.header{
+  display: flex;
+  justify-content:center
+}
+
+.track{
+  border-bottom: 1px solid black;
+}

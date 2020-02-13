@@ -2,67 +2,67 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-class Square extends React.Component {
-    render() {
-      return (
-        <button className="square">
-          {/* TODO */}
-        </button>
-      );
-    }
-  }
-  
-  class Board extends React.Component {
-    renderSquare(i) {
-      return <Square />;
-    }
-  
-    render() {
-      const status = 'Next player: X';
-  
-      return (
-        <div>
-          <div className="status">{status}</div>
-          <div className="board-row">
-            {this.renderSquare(0)}
-            {this.renderSquare(1)}
-            {this.renderSquare(2)}
-          </div>
-          <div className="board-row">
-            {this.renderSquare(3)}
-            {this.renderSquare(4)}
-            {this.renderSquare(5)}
-          </div>
-          <div className="board-row">
-            {this.renderSquare(6)}
-            {this.renderSquare(7)}
-            {this.renderSquare(8)}
-          </div>
-        </div>
-      );
-    }
-  }
-  
-  class Game extends React.Component {
-    render() {
-      return (
-        <div className="game">
-          <div className="game-board">
-            <Board />
-          </div>
-          <div className="game-info">
-            <div>{/* status */}</div>
-            <ol>{/* TODO */}</ol>
-          </div>
-        </div>
-      );
-    }
-  }
-  
-  // ========================================
-  
-  ReactDOM.render(
-    <Game />,
-    document.getElementById('root')
-  );
-  
+function App() {
+  return (
+    <div >
+      <div className="header">
+        <Time1/>
+        <Judge/>
+        <Time2/>
+      </div>
+      <Track1/>
+      <Track2/>
+    </div>
+  )
+}
+
+function Time1() {
+  return (
+    <div>
+      <h2>🐇用时</h2>
+      <div>0</div>
+    </div>
+  )
+}
+
+function Time2() {
+  return (
+    <div>
+      <h2>🐢用时</h2>
+      <div>0</div>
+    </div>
+  )
+}
+
+function Judge() {
+  return (
+    <div>裁判</div>
+  )
+}
+
+function Track1() {
+  return (
+    <div>
+      <div>🐇</div>
+      <div className="track"></div>
+    </div>
+  )
+}
+
+function Track2() {
+  return (
+    <div>
+      <div>🐢</div>
+      <div className="track"></div>
+    </div>
+  )
+}
+
+
+
+// ========================================
+
+ReactDOM.render(
+  <App />,
+  document.getElementById('root')
+);
